@@ -1,24 +1,24 @@
 import DOMPurify from "dompurify";
 import { marked } from "marked";
+import { initial } from "./initial";
 
 function App() {
-  const current = '# Test\n`test code`';
-  const str = DOMPurify.sanitize(marked.parse(current));
+  const str = DOMPurify.sanitize(marked.parse(initial));
   const md = { __html: str };
 
   return (
-    <main className="container-fluid" style={{height: '100svh'}}>
-      <section className="row text-center">
+    <main className="container" style={{height: '100svh'}}>
+      <section className="row text-center py-2">
         <h1>Render.md</h1>
       </section>
       <div className="row">
         <section className="col-12 col-lg-6">
-          <textarea name="markdown" className="form-control" id="editor" cols="30" rows="10">
-            {current}
+          <textarea name="markdown" className="form-control" id="editor" rows="20">
+            {initial}
           </textarea>
         </section>
-        <section id="preview" className="col-12 col-lg-6">
-          <div dangerouslySetInnerHTML={md} />
+        <section className="col-12 col-lg-6 overflow-x-hidden">
+          <div id="preview" dangerouslySetInnerHTML={md} />
         </section>
       </div>
     </main>
