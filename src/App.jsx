@@ -1,14 +1,14 @@
+import DOMPurify from "dompurify";
 import { marked } from "marked";
 
 function App() {
-  const str = marked.parse('# Test')
+  const str = DOMPurify.sanitize(marked.parse('# Test\n`test code`'));
+  const md = { __html: str };
 
   return (
     <>
       <h1>Render.md</h1>
-      <div>
-        {str}
-      </div>
+      <div dangerouslySetInnerHTML={md} />
     </>
   );
 }
