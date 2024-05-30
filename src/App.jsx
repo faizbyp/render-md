@@ -25,8 +25,8 @@ function App() {
               <p className="text-body-tertiary">{`// Output`}</p>
             </div>
             <div className="col text-end">
-              <button className="btn btn-outline-secondary me-2">Copy</button>
-              <button className="btn btn-secondary" disabled>Save</button>
+              <button className="btn btn-outline-secondary me-2" onClick={() =>  navigator.clipboard.writeText(text)}>Copy</button>
+              <button className="btn btn-primary" disabled>Save</button>
             </div>
           </div>
           <div id="preview" dangerouslySetInnerHTML={md} />
