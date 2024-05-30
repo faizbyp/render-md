@@ -12,13 +12,23 @@ function App() {
   return (
     <main className="container" style={{height: '100svh'}}>
       <section className="row text-center py-2">
-        <h1>Render.md</h1>
+        <h1 className="text-body-secondary">Render.md</h1>
       </section>
       <div className="row">
         <section className="col-12 col-lg-6">
-          <textarea value={text} className="form-control" id="editor" rows="20" onChange={e => setText(e.target.value)} />
+          <p className="text-body-tertiary">{`// Input`}</p>
+          <textarea value={text} className="form-control mb-3" id="editor" rows="15" onChange={e => setText(e.target.value)} />
         </section>
         <section className="col-12 col-lg-6 overflow-x-hidden">
+          <div className="row">
+            <div className="col">
+              <p className="text-body-tertiary">{`// Output`}</p>
+            </div>
+            <div className="col text-end">
+              <button className="btn btn-outline-secondary me-2">Copy</button>
+              <button className="btn btn-secondary" disabled>Save</button>
+            </div>
+          </div>
           <div id="preview" dangerouslySetInnerHTML={md} />
         </section>
       </div>
