@@ -3,6 +3,7 @@ import { marked } from "marked";
 import { initial } from "./initial";
 import { useState } from "react";
 import { Popover } from "react-tiny-popover";
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   marked.setOptions({
@@ -20,6 +21,7 @@ function App() {
   }
 
   return (
+    <>
     <main className="container" style={{height: '100svh'}}>
       <section className="row text-center py-2">
         <h1 className="text-body-secondary">Render.md</h1>
@@ -44,6 +46,8 @@ function App() {
         </section>
       </div>
     </main>
+    <Analytics />
+    </>
   );
 }
 
