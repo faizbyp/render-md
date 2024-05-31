@@ -33,9 +33,8 @@ function App() {
             </div>
             <div className="col text-end">
               <Popover isOpen={isCopied} positions={["top", "left"]} onClickOutside={() => setIsCopied(false)} content={<p className="text-warning">Copied!</p>}>
-                <button className="btn btn-outline-secondary me-2" onClick={handleCopy}>Copy</button>
+                <button className="btn btn-secondary me-2" onClick={handleCopy}>Copy</button>
               </Popover>
-              <button className="btn btn-primary" disabled>Save</button>
             </div>
           </div>
           <div id="preview" dangerouslySetInnerHTML={md} />
