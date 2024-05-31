@@ -5,9 +5,12 @@ import { useState } from "react";
 import { Popover } from "react-tiny-popover";
 
 function App() {
+  marked.setOptions({
+    breaks: true
+  })
+
   const [text, setText] = useState(initial);
   const [isCopied, setIsCopied] = useState(false);
-
   const str = DOMPurify.sanitize(marked.parse(text));
   const md = { __html: str };
 
