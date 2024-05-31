@@ -2,12 +2,19 @@ import DOMPurify from "dompurify";
 import { marked } from "marked";
 import { initial } from "./initial";
 import { useState } from "react";
+import { Popover } from "react-tiny-popover";
 
 function App() {
   const [text, setText] = useState(initial);
+  const [isCopied, setIsCopied] = useState(false);
 
   const str = DOMPurify.sanitize(marked.parse(text));
   const md = { __html: str };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text);
+    setIsCopied(true);
+  }
 
   return (
     <main className="container" style={{height: '100svh'}}>
@@ -25,7 +32,9 @@ function App() {
               <p className="text-body-tertiary">{`// Output`}</p>
             </div>
             <div className="col text-end">
-              <button className="btn btn-outline-secondary me-2" onClick={() =>  navigator.clipboard.writeText(text)}>Copy</button>
+              <Popover isOpen={isCopied} positions={["top", "left"]} onClickOutside={() => setIsCopied(false)} content={<p className="text-warning">Copied!</p>}>
+                <button className="btn btn-outline-secondary me-2" onClick={handleCopy}>Copy</button>
+              </Popover>
               <button className="btn btn-primary" disabled>Save</button>
             </div>
           </div>
